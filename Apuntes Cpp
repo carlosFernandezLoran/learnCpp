@@ -1,0 +1,47 @@
+LIBRERIAS:
+
+  #include<nombreLibreria>    //importar libreria
+  
+  > ejemplos librerias:
+      * iostream    ->  librearia basica, permite entrar y sacar datos por la terminal
+      
+FUNCION PRINCIPAL:
+  
+  int main() {
+  
+    [Codigo]
+  
+    return 0;   // asegurarse q todo ha finalizado correctamente
+  }
+COMENTARIOS:
+
+  > inline    ->    "//"
+  > multiline ->    "/*"  ...   "*/"
+  
+IMPRIMIR EN LA TERMINAL:
+
+  using namespace std;    // fuera de main (si no se incluye hay que añadir std:: antes de cout)
+
+  cout<<"lo que queras imprimir"    // en main
+
+  > saltos de linea :   -> icluir "<<endl" fuera de la str
+                        -> incluir "\n" en la str
+  > encadenar diferentes outputs : "<<"   ex: cout<<"Hola me llamo "<<nombre<<endl
+                        
+  DATA TYPES:
+    
+    > int     * numero entero
+    > floa    * numero decimal
+    > double  * decimal de mucha precision
+    > char    * caracter    (representar entre '')
+    
+  VARIABLES: espacio de memoria donde se almacen aun valor determinado
+  
+    declaración:    dataType identifier ;
+    asign value:    identifyer = value ;    (operador de asignacion "=")
+ 
+ LECTURA O ENTRADA DE DATOS
+ 
+  cin>>varName  //guardar valor q entra el usuario en el terminal en varName
+  
+  
