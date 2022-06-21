@@ -34,14 +34,21 @@ IMPRIMIR EN LA TERMINAL:
     > floa    * numero decimal
     > double  * decimal de mucha precision
     > char    * caracter    (representar entre '')
+              * si quieres que guarde n caracteres -> char name[n]
     
   VARIABLES: espacio de memoria donde se almacen aun valor determinado
   
     declaración:    dataType identifier ;
     asign value:    identifyer = value ;    (operador de asignacion "=")
+    declare multile variables in one line -> separate by ","  (same type)
  
  LECTURA O ENTRADA DE DATOS
  
   cin>>varName  //guardar valor q entra el usuario en el terminal en varName
   
-  
+ OPERADORES
+ 
+  suma:   a + b
+  resta:  a - b
+  multiplicacion:   a * b
+  división:   a / b
