@@ -4,6 +4,8 @@ LIBRERIAS:
   
   > ejemplos librerias:
       * iostream    ->  librearia basica, permite entrar y sacar datos por la terminal
+      * cmath       -> lebreria basica, incluye herramientas matematicas basicas
+      * math.h      -> libreria matematica y trigonométrica
       
 FUNCION PRINCIPAL:
   
@@ -26,13 +28,20 @@ IMPRIMIR EN LA TERMINAL:
 
   > saltos de linea :   -> icluir "<<endl" fuera de la str
                         -> incluir "\n" en la str
+  > tabulaciones : "\t"
+  
   > encadenar diferentes outputs : "<<"   ex: cout<<"Hola me llamo "<<nombre<<endl
+  
+  > numero de decimales a mostrar : "cout.precission(n)"    (redondea a n cifras)
                         
   DATA TYPES:
     
     > int     * numero entero
+    
     > floa    * numero decimal
-    > double  * decimal de mucha precision
+    
+    > double  * numero decimal de mucha precision
+    
     > char    * caracter    (representar entre '')
               * si quieres que guarde n caracteres -> char name[n]
     
@@ -44,11 +53,110 @@ IMPRIMIR EN LA TERMINAL:
  
  LECTURA O ENTRADA DE DATOS
  
-  cin>>varName  //guardar valor q entra el usuario en el terminal en varName
+  Un solo valor:    cin>>varName  //guardar valor q entra el usuario en el terminal en varName
+  
+  Mas de un valor:  cin>>val1>>val2 
   
  OPERADORES
  
   suma:   a + b
   resta:  a - b
   multiplicacion:   a * b
-  división:   a / b
+  división:   a / b   (la division de enteros elimina los decimales)
+  mod:    a % b     (residue de la division entera de a entre b)
+  
+  cmath:
+    - raiz cuadrada: sqrt(x)
+    - 
+    
+  math.h:
+    - raiz cuadrada: sqrt(x)
+    - portencia: pow(valor, exponente)
+  
+  Asingment shortcuts:
+    - suma:     a += b    ->    a = a + b
+    - resta:    a -= b    ->    a = a - b
+    - multiplicar   a *= b  ->  a = a * b
+    - division: a /= b    ->    a = a / b
+    
+  Shortcuts:
+     a++   ->   a += 1
+     a--   ->   a -= 1
+  Logicos:
+    - igualdad:       a == b
+    - diferente:      a != b
+    - mayor:          a > b
+    - menor:          a < b
+    - mayor o igual:  a >= b
+    - menor o igual:  a <= b
+    
+ESTRUCTURAS CONDICIONALES:
+  
+  Sentencia IF: 
+  
+    if(condicion){
+      Instrucciones;
+    }
+    
+    Si la condicion es cierta ejecuta las Instrucciones y continua, 
+    si es falsa no ejecuta las Instrucciones
+    
+  Sentencia IF ELSE:
+  
+    if (condicion){
+      Instituciones 1;
+    } else {
+      Instrucciones 2;
+    }
+    
+    Si la condicion es cierta se ejecutan las intrucciones 1 si no se ejecutan 
+    las instrucciones 2. Al acabar se continua con el programa.
+
+  Sentencia IF ELSE IF:
+  
+    if (condicion1) {
+      Instrucciones 1;
+    } else if (condicion2) {
+      Instrucciones 2;
+    } else {
+      Instrucciones 3;
+    }
+    
+    Si se cumple la condicion1 se ejecutan las Instrucciones 1, si no se evalua 
+    la condicion 2, si es cierta se ejecutan las Instrucciones 2 y si no se ejecutan
+    las instrucciones 3. Al acabar se continua con el programa.
+    
+  Sentencia SWITCH:
+    
+    switch (expresion) {
+      case literal1:
+        conjunto de instrucciones 1;
+        break;
+      case literal2:
+        conjunto de instrucciones 2;
+        break;
+      default:
+        conjunto de instrucciones por defecto;
+        break;
+    }
+    
+    Se evalua la expresión, y se ejecuta el caso cuya literal es igual al valor de la 
+    expresion. En caso de no encontrar ninguna se ejecuta el default.
+    
+    Si no se incluye break, se ejecutara el siguiente caso al acabar.
+    
+BUCLES
+  Sentencia WHILE:
+  
+    while (expresion logica) {
+      conjunto de instrucciones ;
+    }
+    
+    Conjunto de instrucciones se repite mientras se cumpla la expresión logica. Al 
+    dejar de ser cierta, se continua con el programa.
+    
+    
+    
+    
+    
+    
