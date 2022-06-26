@@ -6,6 +6,8 @@ LIBRERIAS:
       * iostream    ->  librearia basica, permite entrar y sacar datos por la terminal
       * cmath       -> lebreria basica, incluye herramientas matematicas basicas
       * math.h      -> libreria matematica y trigonométrica
+      * string      -> enables string data type (incluida en iostream)
+      
       
 FUNCION PRINCIPAL:
   
@@ -20,6 +22,8 @@ COMENTARIOS:
   > inline    ->    "//"
   > multiline ->    "/*"  ...   "*/"
   
+  - Facilitate understanding of the code
+  
 IMPRIMIR EN LA TERMINAL:
 
   using namespace std;    // fuera de main (si no se incluye hay que añadir std:: antes de cout)
@@ -33,23 +37,59 @@ IMPRIMIR EN LA TERMINAL:
   > encadenar diferentes outputs : "<<"   ex: cout<<"Hola me llamo "<<nombre<<endl
   
   > numero de decimales a mostrar : "cout.precission(n)"    (redondea a n cifras)
+  
+  > cuando acaba un programa la terminal no se cierra hasta haber apretado una tecla:
+    -> "getch()" al funal del programa    (requiere libreria conio.h)
+    -> "system("pause") al final del programa   (requiere libreria stdlib.h)
+        * incluye instrucciones para continuar el programa
                         
   DATA TYPES:
     
     > int     * numero entero
+              * modifiers: (incluir antes del dataType en la definicion)
+                > signed    ->    puede ser + y -
+                > unsigned  ->    solo +
+                > short     ->    half default size
+                > long      ->    twice default size
     
-    > floa    * numero decimal
+    > float    * numero decimal
     
     > double  * numero decimal de mucha precision
+              * modifiers: (incluir antes del dataType en la definicion)
+                > long    ->    twice default size
     
     > char    * caracter    (representar entre '')
-              * si quieres que guarde n caracteres -> char name[n]
+    
+    > string  * text    (representar entre "")
+              * need to include <string> library to use
+    
+    > booleans    * true or false
     
   VARIABLES: espacio de memoria donde se almacen aun valor determinado
   
-    declaración:    dataType identifier ;
+    declaración:    dataType identifier ; (identifier = nombre de la variable)
     asign value:    identifyer = value ;    (operador de asignacion "=")
     declare multile variables in one line -> separate by ","  (same type)
+    declare without specifying type:    auto name = value ;   (asigns type of value)
+    
+ ARRAYS UNIDIMENSIONALES - VECTORES:
+  - todos del mismo tipo
+  - indice 0
+  - definicion:   tipo nombre[tamaño] ;
+  - inicializar en definicion:    tipo nombre[] = {v1, v2, ...} ;
+  - acceder un elemento:    nombre[indice] 
+  - concadenar dos vectores: (utilizar bucles)
+  
+ARRAYS BIDIMENSIONALES - MATRICES:
+ - todos del mismo tipo
+ - indice 0
+ - declaración: tipo nombre[filas][columnas]
+ - iniciar en declaracion: tipo nombre[filas][columnas] = {v1_1, v2_1, ...,v1_2,v2_2,...}
+    ej: int numeros[2][3] = {1,2,3 , 4,5,6} es la matriz :
+          | 1 2 3 |
+          | 4 5 6 |
+    * opcion mas ordenada : int numeros[2][3] = {{1,2,3},{4,5,6}} ;
+ - acceder a un valor:  nombre[fila][columna]
  
  LECTURA O ENTRADA DE DATOS
  
@@ -59,11 +99,12 @@ IMPRIMIR EN LA TERMINAL:
   
  OPERADORES
  
-  suma:   a + b
-  resta:  a - b
-  multiplicacion:   a * b
-  división:   a / b   (la division de enteros elimina los decimales)
-  mod:    a % b     (residue de la division entera de a entre b)
+  Arithmetic:
+    suma:   a + b
+    resta:  a - b
+    multiplicacion:   a * b
+    división:   a / b   (la division de enteros elimina los decimales)
+    modulus:    a % b     (residue de la division entera de a entre b)
   
   cmath:
     - raiz cuadrada: sqrt(x)
@@ -73,15 +114,26 @@ IMPRIMIR EN LA TERMINAL:
     - raiz cuadrada: sqrt(x)
     - portencia: pow(valor, exponente)
   
-  Asingment shortcuts:
+  Asingment:
+    - normal:   a = b     -> a is given the value of b
     - suma:     a += b    ->    a = a + b
     - resta:    a -= b    ->    a = a - b
     - multiplicar   a *= b  ->  a = a * b
     - division: a /= b    ->    a = a / b
     
-  Shortcuts:
-     a++   ->   a += 1
-     a--   ->   a -= 1
+  Short operators:
+    - increment:   a++  o  ++a ->   a += 1
+    - decrement:   a--  o  --a ->   a -= 1
+     
+     *Prefix :  first changes value of a and then evaluates expression
+        ej:   int a = 5, b ;
+              b = ++a ;
+        result: a = 6 and b = 6
+     *Posfix :  first evaluates expression and then changes value of a
+        ej:   int a = 5, b ;
+              b = ++a ;
+        result: a = 6 and b = 5
+     
   Logicos:
     - igualdad:       a == b
     - diferente:      a != b
@@ -89,6 +141,10 @@ IMPRIMIR EN LA TERMINAL:
     - menor:          a < b
     - mayor o igual:  a >= b
     - menor o igual:  a <= b
+    
+    - or:  a || b
+    - and: a && b
+    - not:  !a
     
 ESTRUCTURAS CONDICIONALES:
   
@@ -101,6 +157,8 @@ ESTRUCTURAS CONDICIONALES:
     Si la condicion es cierta ejecuta las Instrucciones y continua, 
     si es falsa no ejecuta las Instrucciones
     
+    Si solo hay una instruccion no hace falta poner {}  (not a good practice)
+    
   Sentencia IF ELSE:
   
     if (condicion){
@@ -111,6 +169,8 @@ ESTRUCTURAS CONDICIONALES:
     
     Si la condicion es cierta se ejecutan las intrucciones 1 si no se ejecutan 
     las instrucciones 2. Al acabar se continua con el programa.
+    
+    Si solo hay una instruccion no hace falta poner {} (not a good practice)
 
   Sentencia IF ELSE IF:
   
@@ -125,6 +185,8 @@ ESTRUCTURAS CONDICIONALES:
     Si se cumple la condicion1 se ejecutan las Instrucciones 1, si no se evalua 
     la condicion 2, si es cierta se ejecutan las Instrucciones 2 y si no se ejecutan
     las instrucciones 3. Al acabar se continua con el programa.
+    
+    Si solo hay una instruccion no hace falta poner {} (not a good practice)
     
   Sentencia SWITCH:
     
@@ -146,6 +208,7 @@ ESTRUCTURAS CONDICIONALES:
     Si no se incluye break, se ejecutara el siguiente caso al acabar.
     
 BUCLES
+
   Sentencia WHILE:
   
     while (expresion logica) {
@@ -155,6 +218,67 @@ BUCLES
     Conjunto de instrucciones se repite mientras se cumpla la expresión logica. Al 
     dejar de ser cierta, se continua con el programa.
     
+    La sentencia se comprueba antes de empezar.
+    
+    Inicializar iterador fuera del bucle.
+    
+    Use "break;" to exit the loop at any time
+    
+  Sentencia DO WHILE:
+  
+    do {
+      conjunto de instrucciones ;
+    } while (expresión logica) ;
+    
+    Conjunto de expresiones se repite mientras se cumpla la expresión logica. Al 
+    dejar de ser cierta, se continua con el programa.
+    
+    La sentencia se comprueba despues de la primera iteración.
+    
+    Inicializar iterador fuera del bucle.
+    
+    Use "break;" to exit the loop at any time
+    
+  Sentencia FOR:
+  
+    for(expr1; expresion logica; expr2) {
+      conjunto de instrucciones ;
+    }
+    
+    expr1   ->  inicializar el iterador
+    expr2   ->  aumentar el iterador
+    
+    Se ejecuta el conjunto de instrucciones mientras la expresion logica se cumpla
+    
+    Se pueden ignorar las expr1 y expr2 pero hay que incluir los ;
+    
+    Use "break;" to exit the loop at any time
+    
+RANDOM
+  Generar numero aleatorio: 
+    Librerias <time.h> y <stdlib.h>
+      srand(time(NULL));
+      variable = limite_inferior + rand() % (limite_superior + 1 - limite_inferior)
+
+      El numero aleatorio que se almacena en "variable" en el rango
+      [limite_inferior - limite_superior]
+    
+    Libreria <cstdlib>
+      varialbe = limite_inferior + rand() % (limite_superior + 1 - limite_inferior)
+    
+      El numero aleatorio que se almacena en "variable" en el rango
+      [limite_inferior - limite_superior]
+      
+      
+   
+  
+      
+      
+      
+      
+      
+      
+      
     
     
     
