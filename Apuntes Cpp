@@ -3,10 +3,12 @@ LIBRERIAS:
   #include<nombreLibreria>    //importar libreria
   
   > ejemplos librerias:
-      * iostream    ->  librearia basica, permite entrar y sacar datos por la terminal
+      * iostream    -> librearia basica, permite entrar y sacar datos por la terminal
       * cmath       -> lebreria basica, incluye herramientas matematicas basicas
       * math.h      -> libreria matematica y trigonométrica
       * string      -> enables string data type (incluida en iostream)
+      * cstdlib     -> random numbers
+      * cstime      -> time() function
       
       
 FUNCION PRINCIPAL:
@@ -51,19 +53,30 @@ IMPRIMIR EN LA TERMINAL:
                 > unsigned  ->    solo +
                 > short     ->    half default size
                 > long      ->    twice default size
+              * min size:
+                > short     ->    2 bytes
+                > int       ->    2 bytes
+                > long      ->    4 bytes
+                > long long ->    8 bytes
     
     > float    * numero decimal
+               * min size : 4 bytes
     
     > double  * numero decimal de mucha precision
+              * min size: 8 bytes
               * modifiers: (incluir antes del dataType en la definicion)
-                > long    ->    twice default size
+                > long    ->    twice default size (8 bytes)
     
     > char    * caracter    (representar entre '')
+              * min size : 1 byte
     
     > string  * text    (representar entre "")
-              * need to include <string> library to use
+              * need to include <string> library to use (incluida en <iostream>
     
-    > booleans    * true or false
+    > bool    * true or false
+              * if asigned to an integer: true = 1 y false = 0
+              * if an int asigned to a bool: 0 = false y non-zero = true
+              * min size : 1 byte
     
   VARIABLES: espacio de memoria donde se almacen aun valor determinado
   
@@ -90,6 +103,19 @@ ARRAYS BIDIMENSIONALES - MATRICES:
           | 4 5 6 |
     * opcion mas ordenada : int numeros[2][3] = {{1,2,3},{4,5,6}} ;
  - acceder a un valor:  nombre[fila][columna]
+ 
+MULTIDIMENSIONAL ARRAYS:
+  - todos del mismo tipo
+  - indice 0
+  - Declaration:    type name[size1][size2]...[sizeN] ;
+  
+POINTERS :  variable with the address of another variable as its value
+
+  - access memory location address of a variable:   &nombreVariable
+  - datatype: hexadecimal
+  
+  - declare:    dataTypePointedAt *nameOfPointer
+  - asign a value:    nameOfPointer = &variable
  
  LECTURA O ENTRADA DE DATOS
  
@@ -145,6 +171,11 @@ ARRAYS BIDIMENSIONALES - MATRICES:
     - or:  a || b
     - and: a && b
     - not:  !a
+  
+  Pointers:
+    - Address-of:   &var   (returns addrress of the variable var)
+    - Contents-of:  *point  (returns the value in address point)
+        * if point is the pointer of var, *point is interchangeable with var
     
 ESTRUCTURAS CONDICIONALES:
   
@@ -254,21 +285,85 @@ BUCLES
     
     Use "break;" to exit the loop at any time
     
-RANDOM
-  Generar numero aleatorio: 
-    Librerias <time.h> y <stdlib.h>
-      srand(time(NULL));
-      variable = limite_inferior + rand() % (limite_superior + 1 - limite_inferior)
+POINTERS :  variable with the address of another variable as its value
 
-      El numero aleatorio que se almacena en "variable" en el rango
-      [limite_inferior - limite_superior]
-    
-    Libreria <cstdlib>
-      varialbe = limite_inferior + rand() % (limite_superior + 1 - limite_inferior)
-    
-      El numero aleatorio que se almacena en "variable" en el rango
-      [limite_inferior - limite_superior]
+  - access memory location address of a variable:   &nombreVariable
+  - datatype: hexadecimal
+  
+  - declare:    dataTypePointedAt *nameOfPointer
+  - asign a value:    nameOfPointer = &variable
+  - if pointer is emptry asign constant "NULL" (good practice)
+ 
+ 
+MEMORY:
+  
+  - Parts:
+    > The stack : local variables
+    > The heap  : unused memory - can be used when program runs to dynamically 
+                  allocate memory
+  - create the space to store a variable (on the heap) and return address of space 
+    allocated:
+      -> new dataType ;   (works for arrays also)
+      -> store that access in a pointer :    
+          int *pointer = new int ;   
+          *pointer = 5 ;             
+            
+            exp: p stored in stack, with heap allocated address as value
+                 5 is the value of that address in the heap
+  - Variables in the stack managing memory is carried out automatically
+  - Have to manually handle dynamically allocated memory:
+      > free up some memory : delete pointer  (releases memory pointed to by pointer)
+        * doesn't deleat the pointer itself -> dangling pointers : point non-existent
+                                                                   memory locations
+  
+  - Get the size of a variable or datatype -> sizeof(name) ; (in bytes)
+      *a also works with arr
       
+FUNCTIONS:
+
+  - Prototypes : returnDataType functionName () ;
+    > need to declare the body else where
+    > needed if declare function in one file and want to use it in another
+
+  - Declaration: (out of main() )
+
+      returnDataType functionName ( arguments ) {
+
+        //Body of the function
+        
+      }
+      
+  - Return:
+    > If doesn't return anything, return type -> "void"
+    
+  - Parameters:
+    > Optional
+    > Structure -> dataType name
+    > separated wuth ","
+    
+    > Default values:   asign the values in the declaration
+      * To have a default value the parameters have to be the leftmost
+      * Used if no other value provided when called
+      
+      ex: void func (int p1, int p2 = 3, int p3 = 1) {}  //is valid
+      ex: void func (int p1 = 1, int p2, int p3 = 0) {}  //isn't valid
+      
+    
+  - Call -> functionName ( parameters )
+  
+  - Overloading -> you can create functions of the same name but different parameters
+                   number or type
+  
+RANDOM
+  - Random numbers:
+      > using <cstdlib> -> rand()       (semirandom)
+                        -> min + rand() % (max - min + 1)  (in the range [min, max])
+                        -> srand(seed)  
+                          * Hace que rand() haga numeros random
+                          * necesita una seed / a misma seed mismos numeros
+                          
+                        -> time() -> returns the hour (used as seed) : <cstime>
+                            * time(0) -> hour in seconds
       
    
   
